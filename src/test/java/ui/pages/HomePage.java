@@ -1,0 +1,25 @@
+package ui.pages;
+
+import io.qameta.allure.Step;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import ui.core.BasePage;
+
+public class HomePage extends BasePage {
+    private static final String URL = "/home";
+    public static final By userPanelLocator = By.cssSelector(".userpanel-header");
+    public static final By itemsMenuLocator = By.id("tabs_objects");
+    public HomePage(WebDriver driver){
+        super(driver);
+    }
+    public void navigate(){
+        navigate(URL);
+    }
+    @Step("Navigating to Item page via main menu")
+    public void clickItemsMenu(){
+        click(itemsMenuLocator,"Items tab from main menu");
+    }
+    public String getLoggedUser(){
+        return getText(userPanelLocator);
+    }
+}
